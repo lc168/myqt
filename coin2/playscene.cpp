@@ -68,6 +68,8 @@ PlayScene::PlayScene(int levelNum)
     winLabel->move((this->width() - tmpPix.width())*0.5, -tmpPix.height());
 
 
+
+
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
 
@@ -127,6 +129,7 @@ PlayScene::PlayScene(int levelNum)
                 }
                 if(Win == 16){
                     qDebug()<<"Win!";
+                     winLabel->move((this->width() - tmpPix.width())*0.5, -tmpPix.height());
                     //讲胜利的图片，调用下来
                     QPropertyAnimation *animation = new QPropertyAnimation(winLabel, "geometry");
                     //设置间隔时间
