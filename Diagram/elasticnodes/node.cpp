@@ -56,7 +56,7 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QPainter>
 #include <QStyleOption>
-
+#include <QDebug>
 //! [0]
 Node::Node(GraphWidget *graphWidget)
     : graph(graphWidget)
@@ -115,25 +115,29 @@ void Node::calculateForces()
     double weight = (edgeList.size() + 1) * 10;
     foreach (Edge *edge, edgeList) {
         QPointF vec;
-        if (edge->sourceNode() == this)
-            vec = mapToItem(edge->destNode(), 0, 0);
-        else
+        if (edge->sourceNode() == this){
+          //  continue;
+          vec = mapToItem(edge->destNode(), 0, 0);
+         // qDebug()<<"vec="<<vec;
+        }
+        else{
             vec = mapToItem(edge->sourceNode(), 0, 0);
+        }
         xvel -= vec.x() / weight;
         yvel -= vec.y() / weight;
     }
 //! [4]
 
 //! [5]
-    if (qAbs(xvel) < 0.1 && qAbs(yvel) < 0.1)
+    if (qAbs(xvel) < 3 && qAbs(yvel) < 3)
         xvel = yvel = 0;
 //! [5]
 
 //! [6]
-    QRectF sceneRect = scene()->sceneRect();
+    //QRectF sceneRect = scene()->sceneRect();
     newPos = pos() + QPointF(xvel, yvel);
-    newPos.setX(qMin(qMax(newPos.x(), sceneRect.left() + 10), sceneRect.right() - 10));
-    newPos.setY(qMin(qMax(newPos.y(), sceneRect.top() + 10), sceneRect.bottom() - 10));
+    //newPos.setX(qMin(qMax(newPos.x(), sceneRect.left() + 10), sceneRect.right() - 10));
+    //newPos.setY(qMin(qMax(newPos.y(), sceneRect.top() + 10), sceneRect.bottom() - 10));
 }
 //! [6]
 
@@ -169,7 +173,7 @@ QPainterPath Node::shape() const
 void Node::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *)
 {
     painter->setPen(Qt::NoPen);
-    painter->setBrush(Qt::darkGray);
+   // painter->setBrush(Qt::darkGray);
     painter->drawEllipse(-7, -7, 20, 20);
 
     QRadialGradient gradient(-3, -3, 10);

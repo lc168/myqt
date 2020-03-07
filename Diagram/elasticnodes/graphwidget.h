@@ -81,6 +81,7 @@ protected:
     void scaleView(qreal scaleFactor);
 
 private:
+    Node *node1;
     int timerId;
     Node *centerNode;
 };

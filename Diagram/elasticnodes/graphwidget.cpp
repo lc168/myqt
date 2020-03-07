@@ -62,7 +62,7 @@ GraphWidget::GraphWidget(QWidget *parent)
 {
     QGraphicsScene *scene = new QGraphicsScene(this);
     scene->setItemIndexMethod(QGraphicsScene::NoIndex);
-    scene->setSceneRect(-200, -200, 400, 400);
+    //scene->setSceneRect(-200, -200, 400, 400);
     setScene(scene);
     setCacheMode(CacheBackground);
     setViewportUpdateMode(BoundingRectViewportUpdate);
@@ -74,7 +74,7 @@ GraphWidget::GraphWidget(QWidget *parent)
 //! [0]
 
 //! [1]
-    Node *node1 = new Node(this);
+    node1 = new Node(this);
     Node *node2 = new Node(this);
     Node *node3 = new Node(this);
     Node *node4 = new Node(this);
@@ -122,7 +122,7 @@ GraphWidget::GraphWidget(QWidget *parent)
 void GraphWidget::itemMoved()
 {
     if (!timerId)
-        timerId = startTimer(1000 / 25);
+        timerId = startTimer(100 / 25);
 }
 //! [2]
 
@@ -163,6 +163,7 @@ void GraphWidget::timerEvent(QTimerEvent *event)
 {
     Q_UNUSED(event);
 
+    node1->setPos(0, 0);
     QList<Node *> nodes;
     foreach (QGraphicsItem *item, scene()->items()) {
         if (Node *node = qgraphicsitem_cast<Node *>(item))
@@ -214,7 +215,7 @@ void GraphWidget::drawBackground(QPainter *painter, const QRectF &rect)
     gradient.setColorAt(1, Qt::lightGray);
     painter->fillRect(rect.intersected(sceneRect), gradient);
     painter->setBrush(Qt::NoBrush);
-    painter->drawRect(sceneRect);
+    //painter->drawRect(sceneRect);
 
     // Text
     QRectF textRect(sceneRect.left() + 4, sceneRect.top() + 4,
