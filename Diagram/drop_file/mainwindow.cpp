@@ -3,9 +3,15 @@
 #include <QDragEnterEvent>
 #include <QDesktopServices>
 #include<QMimeData>
+#include <QDropEvent>
 #include <QDragLeaveEvent>
+
 #include <QDebug>
 #include <QUrl>
+
+#include <QDir>
+#include <QFile>
+#include <QString>
 
 MainWindow::MainWindow(QWidget *parent) :
 QMainWindow(parent),
@@ -21,9 +27,19 @@ delete ui;
 }
 
 void MainWindow::dragEnterEvent(QDragEnterEvent *event){
-    qDebug()<<"dragEnterEvent:"<<event->mimeData()->urls().first();
+    //qDebug()<<"dragEnterEvent:"<<event->mimeData()->urls().first();
+    QString file = event->mimeData()->urls().first().path();
+    file.replace(QRegExp("^/"), "");
+    QDir dir = QDir(file);
 
-    QDesktopServices::openUrl(event->mimeData()->urls().first());
+  //  const QString namefile = "ssss";
+    QFile  *myfile = new QFile(file);
+    bool ret = myfile->rename("C:/Users/lc/Documents/work/QtProject/s2");
+
+  //  bool ret = file.remove("");
+   // bool ret = dir.rename("C:/Users/lc/Desktop/dabo.zip", "C:/Users/lc/Documents/work/QtProject/sss");
+    qDebug()<<"file="<<file<<" ret="<<ret;
+    //QDesktopServices::openUrl(event->mimeData()->urls().first());
 //    //如果类型是jpg或者png才能接受拖动。
 //    //这里的compare字符串比较函数，相等的时候返回0，所以要取反
 //    if(!event->mimeData()->urls()[0].fileName().right(3).compare("jpg")
