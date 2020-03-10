@@ -1,0 +1,21 @@
+#include <iostream>
+#include <QWidget>
+#include <QApplication>
+#include <opencv2/highgui.hpp>
+using namespace std;
+using namespace cv;
+int main(int argc,char *argv[])
+{
+
+    namedWindow("opencv");
+
+    QApplication a(argc,argv);
+    QWidget w;
+    w.show();
+
+    cout<<"test for qmake"<<endl;
+    a.exec();
+
+    //getchar();
+	return 0;
+}
