@@ -20,6 +20,7 @@ public slots:
     void A(QString s);
     void H(QString s);
     void P();
+    void PositChange(int old, int New);
 private:
     Ui::Widget *ui;
 };

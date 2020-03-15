@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Widget</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.25 rgba(202, 0, 136, 255), stop:1 rgba(255, 255, 255, 255));</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -35,17 +38,83 @@
     <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextEditorInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
    </property>
   </widget>
+  <widget class="QPushButton" name="picButton">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>120</y>
+     <width>151</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&amp;PushButton</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="styleButton">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>320</y>
+     <width>281</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(201, 75, 255);
+background-color: qlineargradient(spread:reflect, x1:1, y1:0.506, x2:1, y2:0, stop:0.164773 rgba(255, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
+   </property>
+   <property name="text">
+    <string>样式表</string>
+   </property>
+  </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>280</y>
+     <x>390</x>
+     <y>250</y>
      <width>75</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
-    <string>&amp;PushButton</string>
+    <string>PushButton</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>170</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>CheckBox</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>300</y>
+     <width>113</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>liucheng</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit2">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>350</y>
+     <width>113</width>
+     <height>20</height>
+    </rect>
    </property>
   </widget>
  </widget>
@@ -68,18 +137,98 @@
    </hints>
   </connection>
   <connection>
+   <sender>picButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Widget</receiver>
+   <slot>P()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>464</x>
+     <y>143</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-6</x>
+     <y>379</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>styleButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Widget</receiver>
+   <slot>P()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>363</x>
+     <y>386</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>369</x>
+     <y>616</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>picButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Widget</receiver>
+   <slot>P()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>400</x>
+     <y>158</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>153</x>
+     <y>610</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>pushButton</sender>
    <signal>clicked()</signal>
    <receiver>Widget</receiver>
    <slot>P()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>194</x>
-     <y>293</y>
+     <x>430</x>
+     <y>260</y>
     </hint>
     <hint type="destinationlabel">
-     <x>-6</x>
-     <y>379</y>
+     <x>444</x>
+     <y>636</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit</sender>
+   <signal>cursorPositionChanged(int,int)</signal>
+   <receiver>Widget</receiver>
+   <slot>PositChange(int,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>117</x>
+     <y>316</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-8</x>
+     <y>421</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit2</sender>
+   <signal>cursorPositionChanged(int,int)</signal>
+   <receiver>Widget</receiver>
+   <slot>PositChange(int,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>142</x>
+     <y>362</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-21</x>
+     <y>463</y>
     </hint>
    </hints>
   </connection>
@@ -88,5 +237,6 @@
   <slot>A(QString)</slot>
   <slot>H(QString)</slot>
   <slot>P()</slot>
+  <slot>PositChange(int,int)</slot>
  </slots>
 </ui>

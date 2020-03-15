@@ -14,3 +14,5 @@ HEADERS += diagramwindow.h link.h node.h propertiesdialog.h
 FORMS += propertiesdialog.ui
 SOURCES += diagramwindow.cpp link.cpp main.cpp node.cpp propertiesdialog.cpp
 RESOURCES += resources.qrc
+
+win32: LIBS += -LC:\Qt\Qt5.14.0\5.14.0\msvc2017_64\lib
