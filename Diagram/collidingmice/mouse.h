@@ -48,20 +48,31 @@
 **
 ****************************************************************************/
 
-#include "mainwindow.h"
+#ifndef MOUSE_H
+#define MOUSE_H
 
-#include <QApplication>
-#include <QDebug>
-int main(int argv, char *args[])
+#include <QGraphicsItem>
+
+//! [0]
+class Mouse : public QGraphicsItem
 {
-    Q_INIT_RESOURCE(diagramscene);
+public:
+    Mouse();
 
-    QApplication app(argv, args);
-    qDebug()<<"liucheng";
+    QRectF boundingRect() const override;
+    QPainterPath shape() const override;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+               QWidget *widget) override;
 
-    MainWindow mainWindow;
-    mainWindow.setGeometry(100, 100, 800, 500);
-    mainWindow.show();
+protected:
+    void advance(int step) override;
 
-    return app.exec();
-}
+private:
+    qreal angle = 0;
+    qreal speed = 0;
+    qreal mouseEyeDirection = 0;
+    QColor color;
+};
+//! [0]
+
+#endif

@@ -15,15 +15,26 @@ public:
 
     Node *fromNode() const;
     Node *toNode() const;
+    Node *myFromNode;
+    Node *myToNode;
 
     void setColor(const QColor &color);
     QColor color() const;
 
     void trackNodes();
 
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
+    QPainterPath shape() const;
+    QRectF boundingRect() const override;
+
+    QPolygonF arrowPolygon;
 private:
-    Node *myFromNode;
-    Node *myToNode;
+    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
+
+
+    QPointF sourcePoint;
+    QPointF destPoint;
+    qreal arrowSize;
 };
 
 #endif

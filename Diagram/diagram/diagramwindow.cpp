@@ -31,8 +31,20 @@ DiagramWindow::DiagramWindow()
     setWindowTitle(tr("Diagram"));
     setWindowIcon(QIcon(":/images/colors.png"));
     updateActions();
-}
 
+    QTimer *timer = new QTimer(this);
+//    QObject::connect(&timer,  SIGNAL(timeout()), scene, SLOT(update()));
+    QObject::connect(timer,  SIGNAL(timeout()), this, SLOT(myupdate()));
+//    QObject::connect(&timer,  SIGNAL(timeout()), view, SLOT(update()));
+    timer->start(1000 / 33);
+}
+void DiagramWindow::myupdate(void)
+{
+   // qDebug()<<"my update is good!\n";
+//    update();        //无法刷新
+//    view->update();  //无法刷新
+//     scene->update();
+}
 void DiagramWindow::addNode()
 {
     Node *node = new Node;

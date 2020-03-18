@@ -75,7 +75,7 @@ void Node::removeLink(Link *link)
 
 QRectF Node::boundingRect() const
 {
-    const int Margin = 1;
+    const int Margin = 8;
     return outlineRect().adjusted(-Margin, -Margin, +Margin, +Margin);
 }
 
@@ -102,11 +102,17 @@ void Node::paint(QPainter *painter,
     painter->setBrush(myBackgroundColor);
 
     QRectF rect = outlineRect();
+//    painter->drawRoundRect(boundingRect(), roundness(rect.width()),
+//                           roundness(rect.height()));
+
     painter->drawRoundRect(rect, roundness(rect.width()),
                            roundness(rect.height()));
 
+//    painter->drawLine(QLine(-500, 0, 500, 0));
+
     painter->setPen(myTextColor);
     painter->drawText(rect, Qt::AlignCenter, myText);
+
 }
 
 void Node::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)

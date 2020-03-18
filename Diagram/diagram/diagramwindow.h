@@ -31,7 +31,7 @@ private slots:
     void sendToBack();
     void properties();
     void updateActions();
-
+    void myupdate();
 private:
     typedef QPair<Node *, Node *> NodePair;
 

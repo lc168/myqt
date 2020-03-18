@@ -8,7 +8,7 @@ DEPENDPATH += .
 INCLUDEPATH += .
 
 QT += widgets
-
+CONFIG += console
 # Input
 HEADERS += diagramwindow.h link.h node.h propertiesdialog.h
 FORMS += propertiesdialog.ui

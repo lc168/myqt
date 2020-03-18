@@ -107,6 +107,8 @@ void Edge::adjust()
 //! [3]
 QRectF Edge::boundingRect() const
 {
+
+
     if (!source || !dest)
         return QRectF();
 
